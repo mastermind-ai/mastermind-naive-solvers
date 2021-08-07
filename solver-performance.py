@@ -12,10 +12,7 @@ def get_averaege_steps(test_runs=1000, replacement=False, num_colors=5 ):
   }
   COLORS = COLORS_MAP.get(num_colors)
   for i in range(test_runs):
-    if replacement:
-      answer = choices(COLORS, k=4)
-    else:
-      answer = sample(COLORS, 4)
+    answer = choices(COLORS, k=4) if replacement else sample(COLORS, 4)
     board, state = solver_1.solve_master_mind(answer, replacement, num_colors)
     steps = len(board)
     total_steps += steps
