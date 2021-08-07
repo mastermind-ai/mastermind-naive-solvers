@@ -1,5 +1,6 @@
 from copy import deepcopy
 from random import sample
+from random import choices
 
 INDEX_COLORS = {
   0: "red",
@@ -37,7 +38,7 @@ def get_move_score(guess, answer):
 def state_to_color(incorrect, semi, perfect):
   return ["default"] * incorrect + ["white"] * semi + ["black"] * perfect
 
-def solve_master_mind(answer, num_colors):
+def solve_master_mind(answer, replacement=False, num_colors=5):
   # since no repetition, track visited colors
   board, state, visited_colors = [], [], []
   prediction = ["red", "blue", "green", "purple"]
@@ -53,9 +54,10 @@ def solve_master_mind(answer, num_colors):
     current_color_Index = COLORS_INDEX[current_color]
     new_color_index = current_color_Index + 1
     new_color = INDEX_COLORS[new_color_index % num_colors]
-    while new_color in visited_colors:
-      new_color_index += 1
-      new_color = INDEX_COLORS[new_color_index % num_colors]
+    if not replacement:
+      while new_color in visited_colors:
+        new_color_index += 1
+        new_color = INDEX_COLORS[new_color_index % num_colors]
     new_prediction = deepcopy(prediction)
     new_prediction[current_slot] = new_color
     # Get the feedback for the new prediction
@@ -81,13 +83,17 @@ def solve_master_mind(answer, num_colors):
 
 if __name__ == "__main__":
   num_colors = 5
+  replacement = False
   COLORS_MAP = {
     5: ["red", "blue", "green", "purple"],
     6: ["red", "blue", "green", "purple", "orange"]
   }
   COLORS = COLORS_MAP.get(num_colors)
-  answer = sample(COLORS, 4)
+  if replacement:
+    answer = choices(COLORS, k=4)
+  else:
+    answer = sample(COLORS, 4)
   print(f'target: {answer}')
-  board, state = solve_master_mind(answer, num_colors)
+  board, state = solve_master_mind(answer, replacement, num_colors)
   for index, board_value in enumerate(board):
     print(f'iteration: {index} guess: {board_value} feedback: {state[index]}')
