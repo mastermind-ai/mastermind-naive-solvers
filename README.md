@@ -53,7 +53,7 @@ Results
 
 | Color configuration | Allow Duplicates? | Average guesses (out of 1000) |
 | ------------------- | ----------------- | ----------------------------- |
-| 6 choose 4          | No                | 9.652                         |
-| 6 choose 4          | Yes               | 11.573                        |
-| 5 choose 4          | No                | 7.435                         |
-| 5 choose 4          | Yes               | 9.095                         |
+| 6 choose 4          | No                | 9.469                         |
+| 6 choose 4          | Yes               | 11.623                        |
+| 5 choose 4          | No                | 7.668                         |
+| 5 choose 4          | Yes               | 9.597                         |

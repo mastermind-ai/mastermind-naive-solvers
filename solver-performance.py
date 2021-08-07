@@ -8,8 +8,8 @@ def get_averaege_steps(test_runs=1000, replacement=False, num_colors=5 ):
   total_steps = 0
   for i in range(test_runs):
     COLORS_MAP = {
-      5: ["red", "blue", "green", "purple"],
-      6: ["red", "blue", "green", "purple", "orange"]
+      5: ["red", "blue", "green", "purple", "yellow"],
+      6: ["red", "blue", "green", "purple", "yellow", "orange"]
     }
     COLORS = COLORS_MAP.get(num_colors)
     if replacement:
