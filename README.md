@@ -8,6 +8,9 @@
 python 1-naive-solver.py
 ```
 
+- By default this runs with 5 colors and no replacement in the answer
+- To adjust this, go to the `1-naive-solver.py` file and change the values assigned to `num_colors` and `replacement` in `if __name__ == "__main__":`
+
 **Solver logic:**
 
 1. Start with a fixed guess
@@ -38,3 +41,19 @@ For feedback, the colors represent the following scenarios
 | 9         | ['purple', 'red', 'blue', 'yellow']     | ['default', 'black', 'black', 'black']   |
 | 10        | ['purple', 'red', 'blue', 'green']      | ['black', 'black', 'black', 'black']     |
 
+**Solver performance**
+
+Run the following to evaluate the algorithm's performance on 1000 solves
+
+```bash
+python solver-performance.py
+```
+
+Results
+
+| Color configuration | Allow Duplicates? | Average guesses (out of 1000) |
+| ------------------- | ----------------- | ----------------------------- |
+| 6 choose 4          | No                | 9.652                         |
+| 6 choose 4          | Yes               | 11.573                        |
+| 5 choose 4          | No                | 7.435                         |
+| 5 choose 4          | Yes               | 9.095                         |
